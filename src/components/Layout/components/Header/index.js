@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
     faCircleXmark,
-    faCloudUpload,
     faCoins,
     faEarthAmericas,
     faEllipsisVertical,
@@ -26,6 +25,8 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -143,7 +144,17 @@ function Header() {
                         <>
                             <Tippy content ='Upload Video' placement='bottom' delay={[0, 200]}>
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy content ='Messages' placement='bottom' delay={[0, 200]}>
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy content ='Inbox' placement='bottom' delay={[0, 200]}>
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -155,10 +166,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/d86a84238dfc2142ac6a7726762bd543.jpeg?biz_tag=tiktok_user.user_cover&x-expires=1659758400&x-signature=DsTkMu2A9KaRuGUlrqjopCE26ME%3D"
                                 className={cx('user-avatar')}
                                 alt=""
+                                fallback='~/assets/images/no-image.png'
                             />
                         ) : (
                             <button className={cx('more-btn')}>
