@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 
 const defaultFn = () => {}; // function mặc định
 
-function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn}) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1]; // gọi items --> gọi phần tử cuối của items
 
@@ -51,11 +51,12 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
                                 onBack={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
                             />
                         )}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}
             onHide={() => setHistory(prev => prev.slice(0 , 1))}
+
         >
             {children}
         </Tippy>
